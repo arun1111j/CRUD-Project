@@ -1,0 +1,239 @@
+/* NavScrollExample.css - Cyberpunk Theme */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Share+Tech+Mono&display=swap');
+:root {
+    --neon-blue: #0ff;
+    --neon-pink: #ff36b5;
+    --neon-green: #0f9;
+    --cyber-black: #0a0a0f;
+    --cyber-dark: #131318;
+    --cyber-light: #2b2b3d;
+    --cyber-grid: rgba(15, 255, 153, 0.1);
+    --glitch-effect: drop-shadow(0 0 10px var(--neon-blue)) drop-shadow(0 0 3px var(--neon-green));
+}
+
+
+/* Override Bootstrap's default navbar styling */
+
+.navbar {
+    background-color: var(--cyber-dark) !important;
+    border-bottom: 2px solid var(--neon-blue);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    padding: 0.8rem 1rem;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.navbar-brand {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--neon-pink) !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-shadow: 0 0 10px var(--neon-pink), 0 0 20px rgba(255, 54, 181, 0.3);
+    position: relative;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    transition: all 0.3s;
+}
+
+.navbar-brand:hover {
+    border: 1px solid var(--neon-pink);
+    box-shadow: 0 0 10px rgba(255, 54, 181, 0.3);
+    border-radius: 4px;
+}
+
+.navbar-toggler {
+    border: 1px solid var(--neon-blue) !important;
+    color: var(--neon-blue) !important;
+    background-color: transparent !important;
+    transition: all 0.3s;
+}
+
+.navbar-toggler:hover {
+    box-shadow: 0 0 10px var(--neon-blue);
+}
+
+.navbar-toggler-icon {
+    filter: invert(1) hue-rotate(180deg) brightness(2);
+}
+
+
+/* Navbar links */
+
+.nav-link {
+    color: white !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 5px;
+    position: relative;
+    transition: all 0.3s;
+    border-bottom: 2px solid transparent;
+    padding: 0.5rem 1rem !important;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: var(--neon-green) !important;
+    text-shadow: 0 0 10px var(--neon-green), 0 0 20px rgba(15, 255, 153, 0.3);
+    border-bottom: 2px solid var(--neon-green);
+}
+
+.nav-link.active {
+    color: var(--neon-blue) !important;
+    border-bottom: 2px solid var(--neon-blue);
+}
+
+
+/* Search form */
+
+.form-control {
+    background-color: var(--cyber-light) !important;
+    border: 1px solid var(--neon-blue) !important;
+    color: white !important;
+    font-family: 'Share Tech Mono', monospace !important;
+    padding: 0.5rem !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.2);
+}
+
+.form-control:focus {
+    box-shadow: 0 0 15px var(--neon-blue) !important;
+    border-color: var(--neon-green) !important;
+    outline: none !important;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* Search button */
+
+.btn-outline-success {
+    border-color: var(--neon-green) !important;
+    color: var(--neon-green) !important;
+    font-family: 'Share Tech Mono', monospace !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    transition: all 0.3s !important;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
+}
+
+.btn-outline-success:hover {
+    background-color: transparent !important;
+    box-shadow: 0 0 15px var(--neon-green) !important;
+    color: var(--neon-green) !important;
+    text-shadow: 0 0 10px var(--neon-green);
+}
+
+.btn-outline-success::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(15, 255, 153, 0.2), transparent);
+    transform: rotate(45deg);
+    animation: glitch 3s infinite linear;
+    pointer-events: none;
+}
+
+
+/* Dropdown menu styling */
+
+.dropdown-menu {
+    background-color: var(--cyber-dark) !important;
+    border: 1px solid var(--neon-blue) !important;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3) !important;
+    backdrop-filter: blur(10px);
+    padding: 0.5rem !important;
+}
+
+.dropdown-item {
+    color: white !important;
+    font-family: 'Share Tech Mono', monospace !important;
+    padding: 0.5rem 1rem !important;
+    transition: all 0.3s !important;
+    border-left: 2px solid transparent;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: var(--cyber-light) !important;
+    color: var(--neon-blue) !important;
+    text-shadow: 0 0 5px var(--neon-blue);
+    border-left: 2px solid var(--neon-blue);
+}
+
+
+/* Animation for glitch effect */
+
+@keyframes glitch {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+
+/* Optional: Add a cyber-grid background to the navbar */
+
+.bg-body-tertiary {
+    background-color: var(--cyber-dark) !important;
+    background-image: linear-gradient(0deg, var(--cyber-grid) 1px, transparent 1px), linear-gradient(90deg, var(--cyber-grid) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+
+/* Add a subtle scanning line effect on hover */
+
+.navbar:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--neon-blue);
+    box-shadow: 0 0 10px var(--neon-blue);
+    animation: scan-horizontal 2s infinite linear;
+    z-index: 1;
+    opacity: 0.7;
+}
+
+@keyframes scan-horizontal {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+
+/* Add responsive adjustments */
+
+@media (max-width: 992px) {
+    .navbar-collapse {
+        background-color: var(--cyber-dark);
+        margin-top: 10px;
+        padding: 10px;
+        border: 1px solid var(--neon-blue);
+        border-radius: 4px;
+    }
+    .nav-link {
+        border-left: 2px solid transparent;
+        border-bottom: none;
+        margin: 5px 0;
+    }
+    .nav-link:hover,
+    .nav-link:focus {
+        border-left: 2px solid var(--neon-green);
+        border-bottom: none;
+    }
+}

@@ -1,0 +1,346 @@
+/* App.css - Cyberpunk Theme */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Share+Tech+Mono&display=swap');
+:root {
+    --neon-blue: #0ff;
+    --neon-pink: #ff36b5;
+    --neon-green: #0f9;
+    --cyber-black: #0a0a0f;
+    --cyber-dark: #131318;
+    --cyber-light: #2b2b3d;
+    --cyber-grid: rgba(15, 255, 153, 0.1);
+    --glitch-effect: drop-shadow(0 0 10px var(--neon-blue)) drop-shadow(0 0 3px var(--neon-green));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--cyber-black);
+    background-image: linear-gradient(0deg, var(--cyber-grid) 1px, transparent 1px), linear-gradient(90deg, var(--cyber-grid) 1px, transparent 1px);
+    background-size: 30px 30px;
+    color: white;
+    font-family: 'Share Tech Mono', monospace;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 0%, var(--cyber-black) 80%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.app {
+    text-align: center;
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: var(--neon-pink);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px var(--neon-pink), 0 0 20px rgba(255, 54, 181, 0.3);
+    position: relative;
+    display: inline-block;
+}
+
+.title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-pink), transparent);
+}
+
+.app h3 {
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--neon-blue);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 5px var(--neon-blue);
+    position: relative;
+    display: inline-block;
+}
+
+.app h3::before,
+.app h3::after {
+    content: '//';
+    color: var(--neon-green);
+    margin: 0 10px;
+    opacity: 0.7;
+}
+
+
+/* Add a scanner effect to the app container */
+
+.app::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--neon-green);
+    box-shadow: 0 0 15px var(--neon-green);
+    animation: scan 8s infinite linear;
+    z-index: 1;
+    opacity: 0.5;
+}
+
+@keyframes scan {
+    0% {
+        top: 0;
+    }
+    100% {
+        top: 100%;
+    }
+}
+
+
+/* Glitch animation for title */
+
+@keyframes glitch {
+    0% {
+        text-shadow: 0.05em 0 0 var(--neon-blue), -0.05em -0.025em 0 var(--neon-green), -0.025em 0.05em 0 var(--neon-pink);
+    }
+    14% {
+        text-shadow: 0.05em 0 0 var(--neon-blue), -0.05em -0.025em 0 var(--neon-green), -0.025em 0.05em 0 var(--neon-pink);
+    }
+    15% {
+        text-shadow: -0.05em -0.025em 0 var(--neon-blue), 0.025em 0.025em 0 var(--neon-green), -0.05em -0.05em 0 var(--neon-pink);
+    }
+    49% {
+        text-shadow: -0.05em -0.025em 0 var(--neon-blue), 0.025em 0.025em 0 var(--neon-green), -0.05em -0.05em 0 var(--neon-pink);
+    }
+    50% {
+        text-shadow: 0.025em 0.05em 0 var(--neon-blue), 0.05em 0 0 var(--neon-green), 0 -0.05em 0 var(--neon-pink);
+    }
+    99% {
+        text-shadow: 0.025em 0.05em 0 var(--neon-blue), 0.05em 0 0 var(--neon-green), 0 -0.05em 0 var(--neon-pink);
+    }
+    100% {
+        text-shadow: -0.025em 0 0 var(--neon-blue), -0.025em -0.025em 0 var(--neon-green), -0.025em -0.05em 0 var(--neon-pink);
+    }
+}
+
+.title:hover {
+    animation: glitch 1s linear infinite;
+}
+
+
+/* Container styling for routes */
+
+.container {
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 1000px;
+    border: 1px solid var(--neon-blue);
+    background-color: var(--cyber-dark);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    clip-path: polygon( 0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient( to bottom, transparent 0px, transparent 1px, rgba(0, 255, 255, 0.05) 1px, rgba(0, 255, 255, 0.05) 2px);
+    pointer-events: none;
+}
+
+
+/* Add some terminal details to the corners */
+
+.container::before {
+    content: ">";
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    color: var(--neon-green);
+    font-size: 14px;
+    font-family: "Share Tech Mono", monospace;
+    opacity: 0.7;
+}
+
+
+/* Button styling to ensure compatibility */
+
+button,
+.btn {
+    font-family: 'Share Tech Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    position: relative;
+}
+
+button:focus,
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 10px var(--neon-blue) !important;
+}
+
+
+/* Link styling */
+
+a {
+    color: var(--neon-blue);
+    text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+}
+
+a:hover {
+    color: var(--neon-green);
+    text-shadow: 0 0 5px var(--neon-green);
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--neon-green);
+    transition: width 0.3s;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+
+/* Make sure our forms have consistent styling */
+
+input,
+select,
+textarea {
+    background-color: var(--cyber-light) !important;
+    border: 1px solid var(--neon-blue) !important;
+    color: white !important;
+    font-family: 'Share Tech Mono', monospace !important;
+    transition: all 0.3s ease !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    box-shadow: 0 0 15px var(--neon-blue) !important;
+    border-color: var(--neon-green) !important;
+    outline: none !important;
+}
+
+
+/* Fix for text-case in className and other React-related classes */
+
+.app,
+.title {
+    text-transform: none;
+}
+
+
+/* Responsive adjustments */
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+    .container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+}
+
+
+/* Loading animation for transitions */
+
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--cyber-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loading::after {
+    content: "LOADING";
+    font-family: 'Orbitron', sans-serif;
+    color: var(--neon-green);
+    font-size: 2rem;
+    letter-spacing: 5px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.3;
+    }
+}
+
+
+/* For table styling in case you have tables in your app */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    background-color: var(--cyber-dark);
+    border: 1px solid var(--neon-blue);
+}
+
+th {
+    background-color: var(--cyber-light);
+    padding: 0.75rem;
+    text-align: left;
+    color: var(--neon-blue);
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--neon-blue);
+}
+
+td {
+    padding: 0.75rem;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+tr:hover {
+    background-color: rgba(0, 255, 255, 0.05);
+}
