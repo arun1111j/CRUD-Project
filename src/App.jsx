@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, BrowserRouter, Link } from "react-router-dom";
-import Create from "./components/create";
-import Edit from "./components/edit";
+import Create from "./components/Create";
+import Edit from "./components/Edit";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import NavScrollExample from "./components/NavScrollExample";
