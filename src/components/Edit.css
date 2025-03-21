@@ -1,5 +1,4 @@
-/* Edit.css - Cyberpunk Theme */
-
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Share+Tech+Mono&display=swap');
 :root {
     --neon-blue: #0ff;
     --neon-pink: #ff36b5;

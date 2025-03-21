@@ -5,10 +5,10 @@ import Edit from "./components/Edit";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import NavScrollExample from "./components/NavScrollExample";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";  // Bootstrap JavaScript
 import "./App.css";  // Import the CSS file
+
 
 function App() {
   return (
