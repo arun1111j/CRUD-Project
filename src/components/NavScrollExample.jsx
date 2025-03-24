@@ -8,8 +8,8 @@ import "./NavScrollExample.css";
 
 function NavScrollExample() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
-      <Container fluid>
+        <Navbar expand="lg" className="cyber-navbar">
+        <Container fluid>
         <Navbar.Brand as={Link} to="/">Navbar scroll</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">

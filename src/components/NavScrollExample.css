@@ -1,24 +1,181 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600&display=swap');
 :root {
+    /* Core Colors */
     --neon-blue: #0ff;
     --neon-pink: #ff36b5;
     --neon-green: #0f9;
+    --neon-purple: #b967ff;
+    --neon-yellow: #ffde03;
+    /* Background Colors */
     --cyber-black: #0a0a0f;
+    --cyber-darker: #0c0c12;
     --cyber-dark: #131318;
+    --cyber-medium: #1e1e27;
     --cyber-light: #2b2b3d;
-    --cyber-grid: rgba(15, 255, 153, 0.1);
+    /* Text Colors */
+    --text-primary: #e0e0e8;
+    --text-secondary: #a0a0b0;
+    --text-muted: #707080;
+    /* Utility Colors */
+    --danger: #ff2d6d;
+    --warning: #ffb627;
+    --success: #0f9;
+    --info: #4cc9f0;
+    /* Grid and Effects */
+    --cyber-grid: rgba(15, 255, 153, 0.08);
     --glitch-effect: drop-shadow(0 0 10px var(--neon-blue)) drop-shadow(0 0 3px var(--neon-green));
+    --scanline-opacity: 0.1;
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
 }
 
 
-/* Override Bootstrap's default navbar styling */
+/* ===== Base Styles ===== */
+
+body {
+    background-color: var(--cyber-black);
+    background-image: linear-gradient(0deg, var(--cyber-grid) 1px, transparent 1px), linear-gradient(90deg, var(--cyber-grid) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-attachment: fixed;
+    color: var(--text-primary);
+    font-family: 'Rajdhani', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.02;
+    pointer-events: none;
+    z-index: 999;
+}
+
+::selection {
+    background: var(--neon-blue);
+    color: var(--cyber-black);
+    text-shadow: none;
+}
+
+
+/* ===== Typography ===== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+h1 {
+    color: var(--neon-blue);
+    font-size: 2.5rem;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+    border-bottom: 2px solid var(--neon-blue);
+    padding-bottom: 0.5rem;
+}
+
+h2 {
+    color: var(--neon-pink);
+    font-size: 2rem;
+    text-shadow: 0 0 8px rgba(255, 54, 181, 0.5);
+}
+
+h3 {
+    color: var(--neon-green);
+    font-size: 1.75rem;
+    text-shadow: 0 0 8px rgba(15, 255, 153, 0.5);
+}
+
+h4 {
+    color: var(--neon-purple);
+    font-size: 1.5rem;
+    text-shadow: 0 0 8px rgba(185, 103, 255, 0.5);
+}
+
+h5,
+h6 {
+    color: var(--neon-yellow);
+    font-size: 1.25rem;
+    text-shadow: 0 0 8px rgba(255, 222, 3, 0.5);
+}
+
+p {
+    margin-bottom: 1.25rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+}
+
+a {
+    color: var(--neon-blue);
+    text-decoration: none;
+    position: relative;
+    transition: all var(--transition-normal);
+    padding: 0 2px;
+}
+
+a:hover {
+    color: white;
+    text-shadow: 0 0 8px var(--neon-blue);
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--neon-blue);
+    transition: width var(--transition-normal);
+    box-shadow: 0 0 8px var(--neon-blue);
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+
+/* ===== Navbar ===== */
 
 .navbar {
     background-color: var(--cyber-dark) !important;
     border-bottom: 2px solid var(--neon-blue);
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-    padding: 0.8rem 1rem;
+    padding: 0;
     font-family: 'Share Tech Mono', monospace;
+    position: relative;
+    z-index: 100;
+    width: 100vw;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    box-sizing: border-box;
+}
+
+.navbar>.container,
+.navbar>.container-fluid {
+    padding: 0;
+    max-width: 100%;
+    width: 100%;
 }
 
 .navbar-brand {
@@ -28,10 +185,9 @@
     letter-spacing: 2px;
     font-weight: 700;
     text-shadow: 0 0 10px var(--neon-pink), 0 0 20px rgba(255, 54, 181, 0.3);
-    position: relative;
     padding: 0.5rem 1rem;
     border: 1px solid transparent;
-    transition: all 0.3s;
+    transition: all var(--transition-normal);
 }
 
 .navbar-brand:hover {
@@ -40,31 +196,22 @@
     border-radius: 4px;
 }
 
-.navbar-toggler {
-    border: 1px solid var(--neon-blue) !important;
-    color: var(--neon-blue) !important;
-    background-color: transparent !important;
-    transition: all 0.3s;
+.cyber-navbar {
+    background-color: var(--cyber-dark) !important;
+    /* Use your cyberpunk dark color */
+    border-bottom: 2px solid var(--neon-blue);
+    /* Add a neon border */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    /* Add a glowing effect */
 }
-
-.navbar-toggler:hover {
-    box-shadow: 0 0 10px var(--neon-blue);
-}
-
-.navbar-toggler-icon {
-    filter: invert(1) hue-rotate(180deg) brightness(2);
-}
-
-
-/* Navbar links */
 
 .nav-link {
-    color: white !important;
+    color: var(--text-primary) !important;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin: 0 5px;
+    margin: 0;
     position: relative;
-    transition: all 0.3s;
+    transition: all var(--transition-normal);
     border-bottom: 2px solid transparent;
     padding: 0.5rem 1rem !important;
 }
@@ -82,156 +229,90 @@
 }
 
 
-/* Search form */
+/* ===== Buttons ===== */
 
-.form-control {
-    background-color: var(--cyber-light) !important;
-    border: 1px solid var(--neon-blue) !important;
-    color: white !important;
-    font-family: 'Share Tech Mono', monospace !important;
-    padding: 0.5rem !important;
-    transition: all 0.3s ease !important;
-    box-shadow: 0 0 5px rgba(0, 255, 255, 0.2);
-}
-
-.form-control:focus {
-    box-shadow: 0 0 15px var(--neon-blue) !important;
-    border-color: var(--neon-green) !important;
-    outline: none !important;
-}
-
-.form-control::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-
-/* Search button */
-
-.btn-outline-success {
-    border-color: var(--neon-green) !important;
-    color: var(--neon-green) !important;
-    font-family: 'Share Tech Mono', monospace !important;
-    text-transform: uppercase !important;
-    letter-spacing: 1px !important;
-    transition: all 0.3s !important;
+.btn {
+    font-family: 'Share Tech Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.5rem 1.5rem;
     position: relative;
-    overflow: hidden;
+    transition: all var(--transition-normal);
+    border-radius: 2px;
     clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
-}
-
-.btn-outline-success:hover {
-    background-color: transparent !important;
-    box-shadow: 0 0 15px var(--neon-green) !important;
-    color: var(--neon-green) !important;
-    text-shadow: 0 0 10px var(--neon-green);
-}
-
-.btn-outline-success::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(15, 255, 153, 0.2), transparent);
-    transform: rotate(45deg);
-    animation: glitch 3s infinite linear;
-    pointer-events: none;
-}
-
-
-/* Dropdown menu styling */
-
-.dropdown-menu {
-    background-color: var(--cyber-dark) !important;
-    border: 1px solid var(--neon-blue) !important;
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3) !important;
-    backdrop-filter: blur(10px);
-    padding: 0.5rem !important;
-}
-
-.dropdown-item {
-    color: white !important;
-    font-family: 'Share Tech Mono', monospace !important;
-    padding: 0.5rem 1rem !important;
-    transition: all 0.3s !important;
-    border-left: 2px solid transparent;
-}
-
-.dropdown-item:hover,
-.dropdown-item:focus {
-    background-color: var(--cyber-light) !important;
-    color: var(--neon-blue) !important;
-    text-shadow: 0 0 5px var(--neon-blue);
-    border-left: 2px solid var(--neon-blue);
-}
-
-
-/* Animation for glitch effect */
-
-@keyframes glitch {
-    0% {
-        left: -100%;
-    }
-    100% {
-        left: 100%;
-    }
-}
-
-
-/* Optional: Add a cyber-grid background to the navbar */
-
-.bg-body-tertiary {
-    background-color: var(--cyber-dark) !important;
-    background-image: linear-gradient(0deg, var(--cyber-grid) 1px, transparent 1px), linear-gradient(90deg, var(--cyber-grid) 1px, transparent 1px);
-    background-size: 20px 20px;
-}
-
-
-/* Add a subtle scanning line effect on hover */
-
-.navbar:hover::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--neon-blue);
-    box-shadow: 0 0 10px var(--neon-blue);
-    animation: scan-horizontal 2s infinite linear;
     z-index: 1;
-    opacity: 0.7;
+    overflow: hidden;
 }
 
-@keyframes scan-horizontal {
-    0% {
-        left: 0;
-    }
-    100% {
-        left: 100%;
-    }
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    z-index: -1;
+    transition: width var(--transition-normal);
+}
+
+.btn:hover::after {
+    width: 100%;
+}
+
+.btn-primary {
+    background-color: transparent;
+    border: 1px solid var(--neon-blue);
+    color: var(--neon-blue);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    box-shadow: 0 0 15px var(--neon-blue);
+    color: white;
+    text-shadow: 0 0 10px var(--neon-blue);
+    border-color: var(--neon-blue);
+}
+
+.btn-primary::after {
+    background-color: rgba(0, 255, 255, 0.15);
 }
 
 
-/* Add responsive adjustments */
+/* ===== Media Queries ===== */
 
 @media (max-width: 992px) {
     .navbar-collapse {
         background-color: var(--cyber-dark);
-        margin-top: 10px;
-        padding: 10px;
+        margin-top: 0;
+        padding: 0;
         border: 1px solid var(--neon-blue);
         border-radius: 4px;
     }
     .nav-link {
-        border-left: 2px solid transparent;
-        border-bottom: none;
-        margin: 5px 0;
+        padding: 0.5rem 1rem !important;
     }
-    .nav-link:hover,
-    .nav-link:focus {
-        border-left: 2px solid var(--neon-green);
-        border-bottom: none;
+}
+
+@media (max-width: 768px) {
+    .container,
+    .container-fluid {
+        padding: 1.5rem 1rem;
+    }
+    h1 {
+        font-size: 1.75rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    h3 {
+        font-size: 1.25rem;
+    }
+    .card-header,
+    .card-body,
+    .card-footer {
+        padding: 1rem;
+    }
+    .btn {
+        padding: 0.4rem 1.2rem;
     }
 }
